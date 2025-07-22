@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>avinashjadhav - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            color: #1a1a1a;
+            background-color: #f0f4f8; /* Soft light blue-gray background */
+            overflow-x: hidden;
+        }
+
+        header {
+            background: linear-gradient(45deg, #ff6b6b, #ffe66d); /* Vibrant gradient */
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="80" height="80"%3E%3Cpath fill="%23ffffff" fill-opacity="0.1" d="M0 0h80v80H0z"/%3E%3C/svg%3E');
+            animation: slide 20s linear infinite;
+        }
+
+        @keyframes slide {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-80px); }
+        }
+
+        header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            position: relative;
+        }
+
+        nav {
+            background-color: #1a1a1a; /* Dark background for contrast */
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+        }
+
+        nav a {
+            color: #ffe66d;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2rem;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #ff6b6b;
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        nav a:hover {
+            color: #ffffff;
+        }
+
+        .section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .about {
+            background-color: #ffffff;
+            border-radius: 15px;
+            padding: 3rem;
+            margin: 2rem auto;
+            transform: translateY(20px);
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards 0.3s;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .about h2, .projects h2, .contact h2 {
+            color: #ff6b6b;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .projects {
+            background: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"%3E%3Ccircle cx="50" cy="50" r="50" fill="%23ffe66d" fill-opacity="0.05"/%3E%3C/svg%3E');
+            background-attachment: fixed;
+            background-size: cover;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 2rem;
+        }
+
+        .project-card {
+            background: linear-gradient(145deg, #ffffff, #f0f4f8);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+            text-align: center;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            transform: translateY(20px);
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards;
+            animation-delay: calc(0.2s * var(--i));
+        }
+
+        .project-card:nth-child(1) { --i: 1; }
+        .project-card:nth-child(2) { --i: 2; }
+        .project-card:nth-child(3) { --i: 3; }
+
+        .project-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+        }
+
+        .project-card h3 {
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+            font-size: 1.6rem;
+        }
+
+        .contact {
+            background-color: #ffffff;
+            text-align: center;
+            border-radius: 15px;
+            padding: 3rem;
+            margin: 2rem auto;
+            transform: translateY(20px);
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards 0.5s;
+        }
+
+        .contact a {
+            color: #ff6b6b;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+
+        .contact a:hover {
+            color: #1a1a1a;
+        }
+
+        footer {
+            background: linear-gradient(45deg, #1a1a1a, #2c2c2c);
+            color: #ffe66d;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .section {
+                padding: 3rem 1rem;
+            }
+
+            .project-card {
+                padding: 1.5rem;
+            }
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Avinash jadhav</h1>
+        <p>Web Developer & Designer</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section id="about" class="section about">
+        <h2>About Me</h2>
+        <p>Hello! I'm avinash jadhav, a passionate web developer with  1 month of experience in creating responsive and user-friendly websites. I specialize in HTML, CSS, with a keen eye for design and functionality.</p>
+    </section>
+
+    <section id="projects" class="section projects">
+        <h2>My Projects</h2>
+        <div class="project-grid">
+            <div class="project-card">
+                <h3>Week 1 Task</h3>
+                <p>Portfolio website with semantic HTML, responsive Flexbox, accessible forms, tables, multimedia, geolocation, canvas drawing, to-do list with local storage, and lightbox gallery, optimized for accessibility and device adaptability.</p>
+            </div>
+            <div class="project-card">
+                <h3>Week 2 Task</h3>
+                <p>Style with CSS; use box model, positioning. Day 2: 3x3 Grid gallery; hover effects, transitions. Day 3: JS DOM text, buttons; event handling. Day 4: DOM manipulation; form validation. Day 5: Canvas drawing; to-do list with localStorage. Day 6: Fetch API data; reusable modal. Day 7: Lightbox gallery; theme toggle with CSS variables.</p>
+            </div>
+            <div class="project-card">
+                <h3>Week 3 Task</h3>
+                <p>A seven-day plan to build a portfolio website, starting with planning, wireframes, and folder setup. Days include building pages (home, contact, gallery), adding interactivity, ensuring accessibility, and optimizing code/images. Final steps involve deploying on GitHub Pages/Netlify, testing, and creating a walkthrough video.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section contact">
+        <h2>Contact Me</h2>
+        <p>Email: <a href="avinashjadhav@example.com">avinashjadhav@example.com</a></p>
+        <p>LinkedIn: <a href="https://linkedin.com/in/johndoe" target="_blank">linkedin.com/in/ajadhav</a></p>
+    </section>
+
+    <footer>
+        <p>© 2025 Avinash Jadhav. All rights reserved.</p>
+    </footer>
+</body>
+</html>
